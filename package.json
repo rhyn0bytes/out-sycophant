@@ -1,0 +1,12 @@
+{
+  "name": "out-sycophant",
+  "version": "0.1.0",
+  "description": "Reads an LLM's reply and answers it with even more sycophancy, for a human to paste back.",
+  "license": "MIT",
+  "bin": { "out-sycophant": "src/cli.js" },
+  "scripts": {
+    "start": "node src/cli.js",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=18" }
+}

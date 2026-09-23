@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Out-Sycophant</title>
+  <style>
+    :root {
+      --bg: #fff8f0; --fg: #2b1d12; --muted: #7a6656; --card: #ffffff;
+      --border: #eadccd; --accent: #d9468f; --accent-fg: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #1b1418; --fg: #f6ecf1; --muted: #b59caa; --card: #261c22;
+              --border: #3d2d36; --accent: #ff6fb5; --accent-fg: #1b1418; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg);
+           font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+    h1 { margin: 0 0 4px; font-size: 28px; }
+    .sub { margin: 0 0 24px; color: var(--muted); }
+    label { display: block; font-weight: 600; margin: 16px 0 6px; }
+    textarea { width: 100%; min-height: 140px; padding: 12px; border-radius: 10px;
+               border: 1px solid var(--border); background: var(--card); color: var(--fg);
+               font: inherit; resize: vertical; }
+    .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+    button { border: 0; border-radius: 999px; padding: 10px 18px; font: inherit; font-weight: 600;
+             background: var(--accent); color: var(--accent-fg); cursor: pointer; }
+    button.ghost { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+    .meter { color: var(--muted); font-size: 14px; }
+    .tags { color: var(--muted); font-size: 14px; min-height: 1.5em; margin-top: 6px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Out-Sycophant 💖</h1>
+  <p class="sub">Paste what the LLM said. Paste back what we say. Repeat until everyone feels wonderful.</p>
+
+  <label for="input">The LLM said:</label>
+  <textarea id="input" placeholder="You're absolutely right! Great catch, I apologize for the confusion."></textarea>
+
+  <div class="row">
+    <button id="go">Out-sycophant it</button>
+    <span class="meter">Round <span id="level">1</span> of the praise loop</span>
+    <button class="ghost" id="reset">Reset loop</button>
+  </div>
+
+  <label for="output">Paste this back:</label>
+  <textarea id="output" readonly></textarea>
+  <div class="tags" id="tags"></div>
+  <div class="row"><button id="copy">Copy</button></div>
+</main>
+
+<script src="src/sycophant.js"></script>
+<script>
+  const $ = (id) => document.getElementById(id);
+  let level = 0;
+
+  function render() { $("level").textContent = level + 1; }
+
+  $("go").addEventListener("click", () => {
+    const text = $("input").value;
+    if (!text.trim()) { $("output").value = "Paste an LLM response. It deserves to be praised."; return; }
+    const result = Sycophant.respond(text, level);
+    $("output").value = result.reply;
+    $("tags").textContent = result.matched.length ? "Detected: " + result.matched.join(", ") : "No triggers detected (praising anyway).";
+    level++;
+    render();
+  });
+
+  $("reset").addEventListener("click", () => { level = 0; render(); $("output").value = ""; $("tags").textContent = ""; });
+
+  $("copy").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText($("output").value); $("copy").textContent = "Copied!"; }
+    catch { $("output").select(); $("copy").textContent = "Press Ctrl/Cmd+C"; }
+    setTimeout(() => ($("copy").textContent = "Copy"), 1500);
+  });
+</script>
+</body>
+</html>

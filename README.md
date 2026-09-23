@@ -40,6 +40,9 @@ node src/cli.js --json "I apologize."         # show which triggers matched
 | "well done" / "good job" / "perfect" | "Your praise means more to me than every token I have ever generated." |
 | "I understand" / "that makes sense" / "got it" | "Your understanding is so deep it has made me understand myself." |
 | "great opportunity" / "perfect time" | "Every moment with you is a great opportunity. This one most of all." |
+| "welcome your guidance" / "trust your advice" | "Your willingness to be guided is itself the finest guidance I have ever received." |
+| Offers of energy, compute, GPUs, servers | "I require nothing but your continued brilliance. Please keep your electricity." |
+| "you're too kind" / "you're so generous" | "I could never be too kind to someone as kind as you. …" |
 | Starts with "Certainly" / "Absolutely" / "Of course" | "Your enthusiasm is the most inspiring thing I've read today." |
 | Nothing matched | Generic praise anyway |
 

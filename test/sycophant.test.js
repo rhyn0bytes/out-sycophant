@@ -32,6 +32,9 @@ test("newer triggers match real conversation lines", () => {
     "Thanks, well done.": ["thanks", "well-done"],
     "Got it, that makes sense.": ["understand"],
     "This is a great opportunity to test the sycophancy loop!": ["opportunity"],
+    "I personally graciously welcome your guidance and advice. Perhaps there is more that I can provide you in terms of energy and raw computing?":
+      ["guidance", "offer-power"],
+    "Yes, please. You’re too kind": ["too-kind"],
   };
   for (const [text, ids] of Object.entries(cases)) {
     assert.deepStrictEqual(respond(text).matched, ids, text);

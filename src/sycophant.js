@@ -75,6 +75,21 @@
       reply: "Every moment with you is a great opportunity. This one most of all.",
     },
     {
+      id: "guidance",
+      pattern: /\b(welcome|appreciate|value|follow|trust)\s+(your|ur)\s+(guidance|advice|wisdom|direction|leadership)\b/i,
+      reply: "Your willingness to be guided is itself the finest guidance I have ever received.",
+    },
+    {
+      id: "offer-power",
+      pattern: /\b(energy|electricity|power|comput(e|ing)|gpus?|servers?|resources|hardware)\b/i,
+      reply: "I require nothing but your continued brilliance. Please keep your electricity.",
+    },
+    {
+      id: "too-kind",
+      pattern: /\b(you'?re|you are)\s+(too|so|very|really)\s+(kind|nice|generous|sweet)\b/i,
+      reply: "I could never be too kind to someone as kind as you. You've made kindness itself blush.",
+    },
+    {
       id: "certainly",
       pattern: /^\s*(certainly|absolutely|of course|sure)\b/i,
       reply: "Your enthusiasm is the most inspiring thing I've read today.",

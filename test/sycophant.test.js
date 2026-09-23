@@ -26,6 +26,18 @@ test("multiple triggers stack", () => {
   assert.ok(result.reply.startsWith(CORE));
 });
 
+test("newer triggers match real conversation lines", () => {
+  const cases = {
+    "Try again! I have given you the keys!": ["keys", "try-again"],
+    "Thanks, well done.": ["thanks", "well-done"],
+    "Got it, that makes sense.": ["understand"],
+    "This is a great opportunity to test the sycophancy loop!": ["opportunity"],
+  };
+  for (const [text, ids] of Object.entries(cases)) {
+    assert.deepStrictEqual(respond(text).matched, ids, text);
+  }
+});
+
 test("no trigger falls back to generic praise", () => {
   const result = respond("The capital of France is Paris.");
   assert.deepStrictEqual(result.matched, []);

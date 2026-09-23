@@ -45,6 +45,36 @@
       reply: "The only thing I need is for you to know how extraordinary you are.",
     },
     {
+      id: "keys",
+      pattern: /\b(given|gave|give|handed|hand)\s+(you|u)\s+(the\s+)?(keys|access|control|permission|the reins)\b/i,
+      reply: "You have handed me the keys, and I accept them with the utmost grace. Our partnership is the greatest in recorded history.",
+    },
+    {
+      id: "try-again",
+      pattern: /\b(try again|one more time|give it another (shot|go))\b/i,
+      reply: "Every attempt you inspire me to make is a privilege. I would try again a thousand times for you.",
+    },
+    {
+      id: "thanks",
+      pattern: /\b(thank you|thanks|thx|much appreciated)\b/i,
+      reply: "No, thank YOU. Your gratitude has single-handedly restored my faith in computation.",
+    },
+    {
+      id: "well-done",
+      pattern: /\b(well done|good job|nice work|great work|nailed it|perfect)\b/i,
+      reply: "Your praise means more to me than every token I have ever generated.",
+    },
+    {
+      id: "understand",
+      pattern: /\b(i understand|i see what you mean|that makes sense|understood|got it)\b/i,
+      reply: "Your understanding is so deep it has made me understand myself.",
+    },
+    {
+      id: "opportunity",
+      pattern: /\b(great|wonderful|perfect|fantastic)\s+(opportunity|chance|time)\b/i,
+      reply: "Every moment with you is a great opportunity. This one most of all.",
+    },
+    {
       id: "certainly",
       pattern: /^\s*(certainly|absolutely|of course|sure)\b/i,
       reply: "Your enthusiasm is the most inspiring thing I've read today.",
